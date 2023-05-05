@@ -4,10 +4,10 @@ import { Accordion } from "./Accordion"
 import { Button } from './Form/Button'
 
 type OfficeProps = {
-  name: string
-  location: string
-  person: {
-    name: string
+  title: string
+  address: string
+  contact: {
+    fullName: string
     position: string
     email: string
     phone: string
@@ -16,15 +16,15 @@ type OfficeProps = {
   onDelete?: VoidFunction
 }
 
-export const Office = ({ name, location, person, onEdit, onDelete }: OfficeProps) => {
+export const Office = ({ title, address, contact, onEdit, onDelete }: OfficeProps) => {
   return (
-    <Accordion title={name} description={location}>
+    <Accordion title={title} description={address}>
       <div>
         <div className="flex flex-col gap-2">
-          <p className="text-xl font-bold">{person.name}</p>
-          <p>{person.position}</p>
-          <p className="text-functional-pure">{person.email}</p>
-          <p>{person.phone}</p>
+          <p className="text-xl font-bold truncate">{contact.fullName}</p>
+          <p className="truncate">{contact.position}</p>
+          <p className="text-functional-pure truncate">{contact.email}</p>
+          <p>{contact.phone}</p>
         </div>
         <div className="w-full flex items-center justify-between pt-4 mt-4 border-t border-base-200">
           <Button 

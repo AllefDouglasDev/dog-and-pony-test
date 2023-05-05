@@ -3,33 +3,18 @@
 import { useState } from "react"
 import { Office } from "./components/Office"
 import { NewLocationForm } from "./components/Location/NewLocationForm"
+import { FormProps } from "./components/Location/LocationForm/validator"
+import type { Location } from './types/models'
 
 export default function Home() {
   const [isCreatingNewLocation, setIsCreatingNewLocation] = useState(false)
-  const [offices] = useState([
-    {
-      id: '1',
-      name:"Headquarters",
-      location:"3762 W. Dallas St.",
-      person:{
-        name: 'Hellena John',
-        position: 'Software Tester',
-        email: 'georgia.young@example.com',
-        phone: '(808) 555-0111',
-      }
-    },
-    {
-      id: '2',
-      name:"Headquarters",
-      location:"3762 W. Dallas St.",
-      person:{
-        name: 'Hellena John',
-        position: 'Software Tester',
-        email: 'georgia.young@example.com',
-        phone: '(808) 555-0111',
-      }
-    }
-  ])
+  const [offices, setOffices] = useState<Location[]>([])
+
+  const handleCreateNewLocation = (data: FormProps) => {
+    const office = { id: self.crypto.randomUUID(), ...data }
+    setOffices(_offices => [...offices, office])
+    setIsCreatingNewLocation(false)
+  }
 
   return (
     <main className="flex flex-col gap-8 min-h-screen items-center justify-center bg-base-pure">
@@ -43,7 +28,12 @@ export default function Home() {
           <span>Add New Location</span>
           <div className="text-2xl">+</div>
         </button>
-        {isCreatingNewLocation && <NewLocationForm onClose={() => setIsCreatingNewLocation(false)} />}
+        {isCreatingNewLocation && (
+          <NewLocationForm 
+            onCreate={handleCreateNewLocation}
+            onClose={() => setIsCreatingNewLocation(false)} 
+          />
+        )}
         {offices.map(office => (<Office key={office.id} {...office} />))}
         <footer className="flex flex-col items-center justify-center gap-2 mt-2" >
           <p className="text-base-200">This project is for test purpose only.</p>

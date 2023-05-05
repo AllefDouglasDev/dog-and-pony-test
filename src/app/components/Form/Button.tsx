@@ -13,7 +13,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button = ({ icon, children, variant = 'primary', className = '', ...props }: ButtonProps) => {
   return (
     <button 
-      className={`flex items-center gap-2 text-sm w-fit ${variants[variant]} ${className}`}
+      className={`flex items-center gap-2 text-sm w-fit hover:opacity-80 ${variants[variant]} ${className}`}
       type="button"
       {...props}
     >

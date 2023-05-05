@@ -21,29 +21,29 @@ export const LocationForm = () => {
       </div>
       <Input 
         required 
-        name="fullName" 
+        name="contact.fullName" 
         label="Full name" 
         placeholder="Enter the full name"
       />
       <Input 
         required 
-        name="position" 
+        name="contact.position" 
         label="Job Position" 
         placeholder="Enter the job position"
       />
       <Input 
         required 
-        name="email" 
+        name="contact.email" 
         label="Email address" 
         placeholder="name@example.com"
       />
       <Input 
         required 
-        name="phone" 
+        name="contact.phone" 
         label="Phone" 
         placeholder="(xxx) xxx-xxxx"
       />
-      <Button type="submit" form="new-form">
+      <Button type="submit">
         Save
       </Button>
     </div>
