@@ -10,7 +10,10 @@ type NewLocationForm = {
 }
 
 export const NewLocationForm = ({ onClose, onCreate }: NewLocationForm) => {
-  const formMethods = useForm<FormProps>({ resolver: zodResolver(schema) })
+  const formMethods = useForm<FormProps>({ 
+    mode: 'all',
+    resolver: zodResolver(schema), 
+  })
 
   return (
     <div className="w-80 min-w-80 flex flex-col rounded-lg shadow-lg bg-white">

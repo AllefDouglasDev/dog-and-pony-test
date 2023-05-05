@@ -1,7 +1,10 @@
+import { useFormContext } from "react-hook-form"
 import { Button } from "../../Form/Button"
 import { Input } from "../../Form/Input"
 
 export const LocationForm = () => {
+  const { formState } = useFormContext()
+
   return (
     <div className="flex flex-col gap-4 p-4">
       <Input 
@@ -43,7 +46,7 @@ export const LocationForm = () => {
         label="Phone" 
         placeholder="(xxx) xxx-xxxx"
       />
-      <Button type="submit">
+      <Button type="submit" disabled={!formState.isValid}>
         Save
       </Button>
     </div>

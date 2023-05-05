@@ -13,6 +13,7 @@ type EditLocationForm = {
 
 export const EditLocationForm = ({ location, onClose, onSave }: EditLocationForm) => {
   const formMethods = useForm<FormProps>({ 
+    mode: 'all',
     resolver: zodResolver(schema),
     defaultValues: location
   })
