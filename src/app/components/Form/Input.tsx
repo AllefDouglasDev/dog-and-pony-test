@@ -1,6 +1,7 @@
 import { InputHTMLAttributes, ReactNode, useCallback } from "react"
 import { useFormContext } from "react-hook-form"
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { IoMdAlert } from 'react-icons/io'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string
@@ -8,7 +9,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 const modifiers = {
-  error: (hasError: boolean) => hasError ? 'border-red-500 outline-red-500' : ''
+  error: (hasError: boolean) => hasError ? 'border-danger-pure outline-danger-pure' : ''
 }
 
 export const Input = ({ name, label, required, className = '', ...props }: InputProps) => {
@@ -34,13 +35,21 @@ export const Input = ({ name, label, required, className = '', ...props }: Input
           {required && <sup>*</sup>}
         </label>
       )}
-      <input 
-        id={name}
-        className={`border border-black h-10 rounded p-3 outline-functional-pure ${modifiers.error(!!error)} ${className}`} 
-        {...props}
-        {...register(name)}
-      />
-      {error && <span className="text-red-500 text-xs">{error}</span>}
+      <div className="w-full relative">
+        <input
+          id={name}
+          className={`w-full border border-black h-10 rounded p-3 outline-functional-pure ${modifiers.error(!!error)} ${className}`}
+          {...props}
+          {...register(name)}
+        />
+        {error && (
+          <IoMdAlert
+            size={20}
+            className="text-danger-pure absolute right-2.5 top-1/2 -translate-y-1/2"
+          />
+        )}
+      </div>
+      {error && <span className="text-danger-pure text-xs">{error}</span>}
     </div>
   )
 }

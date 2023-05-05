@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        mono: ['var(--font-roboto)'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -23,6 +26,9 @@ module.exports = {
         },
         functional: {
           pure: '#33A6BA',
+        },
+        danger: {
+          pure: '#FF7B92',
         },
       },
     },

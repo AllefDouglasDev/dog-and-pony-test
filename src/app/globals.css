@@ -16,6 +16,14 @@
   }
 }
 
+html {
+  font-family: var(--font-roboto);
+}
+ 
+h1 {
+  font-family: var(--font-roboto);
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

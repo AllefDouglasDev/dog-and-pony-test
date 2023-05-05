@@ -36,7 +36,7 @@ export const Office = ({ title, address, contact, onEdit, onDelete }: OfficeProp
             edit
           </Button>
           <Button 
-            className="text-red-500" 
+            className="text-danger-pure" 
             icon={<RiDeleteBinLine  size={20} />}
             onClick={onDelete}
             variant="outline"
