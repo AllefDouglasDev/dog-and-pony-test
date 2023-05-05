@@ -1,9 +1,11 @@
 'use client'
-import { useCallback, useState } from "react"
-import { Accordion } from "./components/Accordion"
+
+import { useState } from "react"
 import { Office } from "./components/Office"
+import { NewLocationForm } from "./components/Location/NewLocationForm"
 
 export default function Home() {
+  const [isCreatingNewLocation, setIsCreatingNewLocation] = useState(false)
   const [offices] = useState([
     {
       id: '1',
@@ -29,10 +31,6 @@ export default function Home() {
     }
   ])
 
-  const handleAddNewLocation = useCallback(() => {
-    console.log("add new location")
-  }, [])
-
   return (
     <main className="flex flex-col gap-8 min-h-screen items-center justify-center bg-base-pure">
       <h1 className="text-6xl text-functional-pure font-light">Offices</h1>
@@ -40,11 +38,12 @@ export default function Home() {
         <button 
           type="button" 
           className="w-80 min-w-80 rounded-lg bg-functional-pure text-white flex items-center justify-between px-4 py-3"
-          onClick={handleAddNewLocation}
+          onClick={() => setIsCreatingNewLocation(true)}
         >
           <span>Add New Location</span>
           <div className="text-2xl">+</div>
         </button>
+        {isCreatingNewLocation && <NewLocationForm onClose={() => setIsCreatingNewLocation(false)} />}
         {offices.map(office => (<Office key={office.id} {...office} />))}
         <footer className="flex flex-col items-center justify-center gap-2 mt-2" >
           <p className="text-base-200">This project is for test purpose only.</p>

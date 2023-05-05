@@ -31,6 +31,7 @@ export const Office = ({ name, location, person, onEdit, onDelete }: OfficeProps
             className="text-base-200" 
             icon={<MdOutlineEdit size={20} />}
             onClick={onEdit}
+            variant="outline"
           >
             edit
           </Button>
@@ -38,6 +39,7 @@ export const Office = ({ name, location, person, onEdit, onDelete }: OfficeProps
             className="text-red-500" 
             icon={<RiDeleteBinLine  size={20} />}
             onClick={onDelete}
+            variant="outline"
           >
             delete
           </Button>
