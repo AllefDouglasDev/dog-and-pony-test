@@ -12,6 +12,19 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      content: {
+        'arrow-white': 'url("/icons/arrow-white.svg")',
+        'arrow-blue': 'url("/icons/arrow-blue.svg")',
+      },
+      colors: {
+        base: {
+          pure: '#E8EDF3',
+          200: '#989EA7'
+        },
+        functional: {
+          pure: '#33A6BA',
+        },
+      },
     },
   },
   plugins: [],
