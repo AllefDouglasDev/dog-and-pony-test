@@ -18,6 +18,10 @@ export default function Home() {
     setIsCreatingNewLocation(false)
   }
 
+  const handleDeleteLocation = (id: string) => {
+    setOffices(_offices => _offices.filter(office => office.id !== id))
+  }
+
   return (
     <main className="flex flex-col gap-8 min-h-screen items-center justify-center bg-base-pure">
       <h1 className="text-6xl text-functional-pure font-light">Offices</h1>
@@ -37,7 +41,13 @@ export default function Home() {
             <div className="text-2xl">+</div>
           </button>
         )}
-        {offices.map(office => (<Office key={office.id} {...office} />))}
+        {offices.map(office => (
+          <Office 
+            key={office.id} 
+            {...office} 
+            onDelete={() => handleDeleteLocation(office.id)}
+          />
+        ))}
         <footer className="flex flex-col items-center justify-center gap-2 mt-2" >
           <p className="text-base-200">This project is for test purpose only.</p>
           <a 
