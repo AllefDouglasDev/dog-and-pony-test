@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "title": "Headquarters",
+    "address": "123 Main St, Anytown, USA",
+    "contact": {
+      "fullName": "John Smith",
+      "email": "john.smith@company.com",
+      "position": "CEO",
+      "phone": "(999) 555-1234"
+    }
+  },
+  {
+    "id": "2",
+    "title": "New York Office",
+    "address": "456 Park Ave, New York, NY",
+    "contact": {
+      "fullName": "Jane Doe",
+      "email": "jane.doe@company.com",
+      "position": "VP of Sales",
+      "phone": "(999) 555-5678"
+    }
+  },
+  {
+    "id": "3",
+    "title": "London Office",
+    "address": "789 Oxford St, London, UK",
+    "contact": {
+      "fullName": "Bob Johnson",
+      "email": "bob.johnson@company.com",
+      "position": "CTO",
+      "phone": "(999) 555-9012"
+    }
+  },
+  {
+    "id": "4",
+    "title": "Paris Office",
+    "address": "10 Champs-Élysées, Paris, France",
+    "contact": {
+      "fullName": "Alice Smith",
+      "email": "alice.smith@company.com",
+      "position": "CFO",
+      "phone": "(999) 555-3456"
+    }
+  },
+  {
+    "id": "5",
+    "title": "Tokyo Office",
+    "address": "11-1 Tokyo Tower, Tokyo, Japan",
+    "contact": {
+      "fullName": "Hiroshi Tanaka",
+      "email": "hiroshi.tanaka@company.com",
+      "position": "COO",
+      "phone": "(999) 555-7890"
+    }
+  }
+]

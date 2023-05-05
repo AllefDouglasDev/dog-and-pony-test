@@ -1,9 +1,11 @@
 import { useCallback, useState } from "react";
 import { FormProps } from "../components/Location/LocationForm/validator";
 import type { Location } from '../types/models'
+import defaultLocations from '../fixtures/locations.json'
 
 export function useLocations() {
-  const [locations, setLocations] = useState<Location[]>([])
+  console.log(defaultLocations)
+  const [locations, setLocations] = useState<Location[]>(defaultLocations)
 
   const createLocation = useCallback((data: FormProps) => {
     const location = { id: self.crypto.randomUUID(), ...data }
