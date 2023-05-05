@@ -1,5 +1,6 @@
 import { InputHTMLAttributes, ReactNode, useCallback } from "react"
 import { useFormContext } from "react-hook-form"
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string
@@ -12,6 +13,7 @@ const modifiers = {
 
 export const Input = ({ name, label, required, className = '', ...props }: InputProps) => {
   const { register, formState: { errors } } = useFormContext()
+  const [parent] = useAutoAnimate()
 
   const getMessage = useCallback(() => {
     if (!errors || !name) return
@@ -25,7 +27,7 @@ export const Input = ({ name, label, required, className = '', ...props }: Input
   const error = getMessage()
 
   return (
-    <div className="flex flex-col gap-2 text-black">
+    <div ref={parent} className="flex flex-col gap-2 text-black">
       {label && (
         <label htmlFor={name}>
           {label}

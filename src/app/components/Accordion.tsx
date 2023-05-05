@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 
 type AccordionProps = {
   title: string
@@ -9,8 +10,10 @@ type AccordionProps = {
 const icon = "after:content-arrow-blue group-open:after:content-arrow-white"
 
 export const Accordion = ({ title, description, children }: AccordionProps) => {
+  const [parent] = useAutoAnimate()
+
   return (
-    <details className="group w-80 min-w-80 rounded-lg bg-white text-black shadow-lg">
+    <details ref={parent} className="group w-80 min-w-80 rounded-lg bg-white text-black shadow-lg">
       <summary 
         className={`items-center justify-between text-2xl p-4 rounded-lg cursor-pointer group-open:bg-base-200 group-open:text-white group-open:rounded-b-none list-none flex ${icon}`} 
       >
