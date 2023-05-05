@@ -1,6 +1,7 @@
 import { useFormContext } from "react-hook-form"
 import { Button } from "../../Form/Button"
 import { Input } from "../../Form/Input"
+import { maskPhoneNumber } from "@/app/utils/masks"
 
 export const LocationForm = () => {
   const { formState } = useFormContext()
@@ -45,6 +46,7 @@ export const LocationForm = () => {
         name="contact.phone" 
         label="Phone" 
         placeholder="(xxx) xxx-xxxx"
+        mask={maskPhoneNumber}
       />
       <Button type="submit" disabled={!formState.isValid}>
         Save

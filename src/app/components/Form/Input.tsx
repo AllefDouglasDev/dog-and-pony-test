@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, useCallback } from "react"
+import { ChangeEventHandler, InputHTMLAttributes, ReactNode, useCallback } from "react"
 import { useFormContext } from "react-hook-form"
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { IoMdAlert } from 'react-icons/io'
@@ -6,15 +6,22 @@ import { IoMdAlert } from 'react-icons/io'
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string
   label?: ReactNode
+  mask?: (value: string) => string
 }
 
 const modifiers = {
   error: (hasError: boolean) => hasError ? 'border-danger-pure outline-danger-pure' : ''
 }
 
-export const Input = ({ name, label, required, className = '', ...props }: InputProps) => {
+export const Input = ({ name, label, required, mask, className = '', ...props }: InputProps) => {
   const { register, formState: { errors } } = useFormContext()
   const [parent] = useAutoAnimate()
+
+  const onChange: ChangeEventHandler<HTMLInputElement> = event => {
+    if (mask) {
+      event.target.value = mask(event.target.value)
+    }
+  }
 
   const getMessage = useCallback(() => {
     if (!errors || !name) return
@@ -40,7 +47,7 @@ export const Input = ({ name, label, required, className = '', ...props }: Input
           id={name}
           className={`w-full border border-black h-10 rounded p-3 outline-functional-pure ${modifiers.error(!!error)} ${className}`}
           {...props}
-          {...register(name)}
+          {...register(name, { onChange })}
         />
         {error && (
           <IoMdAlert
