@@ -7,8 +7,10 @@ import { FormProps } from "./components/Location/LocationForm/validator"
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { EditLocationForm } from "./components/Location/EditLocationForm"
 import { useLocations } from "./hooks/useLocations"
+import { FeedbackBanner } from "./components/FeedbackBanner"
 
 export default function Home() {
+  const [isFeedbackVisible, setIsFeedbackVisible] = useState(false)
   const [isCreateFormVisible, setIsCreateFormVisible] = useState(false)
   const [editingLocationIds, setEditingLocationIds] = useState<string[]>([])
   const { locations, createLocation, editLocation, deleteLocation } = useLocations()
@@ -22,6 +24,7 @@ export default function Home() {
   const handleEditLocation = (data: FormProps, id: string) => {
     editLocation(data, id)
     handleCloseEditionForm(id)
+    setIsFeedbackVisible(true)
   }
 
   const handleDeleteLocation = (id: string) => {
@@ -39,7 +42,10 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col gap-8 min-h-screen items-center bg-base-pure py-44 px-5">
+    <main className="flex flex-col gap-8 min-h-screen items-center bg-base-pure py-44 px-5 relative">
+      {isFeedbackVisible && (
+        <FeedbackBanner text="The locaton has been updated." onClose={() => setIsFeedbackVisible(false)} />
+      )}
       <h1 className="text-6xl text-functional-pure font-light">Offices</h1>
       <div className="flex flex-col gap-4" ref={parent}>
         {isCreateFormVisible ? (
