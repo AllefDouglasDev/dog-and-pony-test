@@ -1,13 +1,19 @@
 import { ButtonHTMLAttributes, ReactNode } from "react"
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  icon?: ReactNode
+const variants = {
+  primary: 'px-4 py-3 rounded bg-functional-pure text-white',
+  outline: 'bg-transparent uppercase'
 }
 
-export const Button = ({ icon, children, className = '', ...props }: ButtonProps) => {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  icon?: ReactNode
+  variant?: keyof typeof variants
+}
+
+export const Button = ({ icon, children, variant = 'primary', className = '', ...props }: ButtonProps) => {
   return (
     <button 
-      className={`flex items-center gap-2 uppercase text-sm ${className}`}
+      className={`flex items-center gap-2 text-sm w-fit ${variants[variant]} ${className}`}
       type="button"
       {...props}
     >
