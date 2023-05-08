@@ -4,7 +4,6 @@ import type { Location } from '../types/models'
 import defaultLocations from '../fixtures/locations.json'
 
 export function useLocations() {
-  console.log(defaultLocations)
   const [locations, setLocations] = useState<Location[]>(defaultLocations)
 
   const createLocation = useCallback((data: FormProps) => {
