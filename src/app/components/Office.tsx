@@ -12,11 +12,11 @@ type OfficeProps = {
     email: string
     phone: string
   }
-  onEdit?: VoidFunction
+  onUpdate?: VoidFunction
   onDelete?: VoidFunction
 }
 
-export const Office = ({ title, address, contact, onEdit, onDelete }: OfficeProps) => {
+export const Office = ({ title, address, contact, onUpdate, onDelete }: OfficeProps) => {
   return (
     <Accordion title={title} description={address}>
       <div>
@@ -30,7 +30,7 @@ export const Office = ({ title, address, contact, onEdit, onDelete }: OfficeProp
           <Button 
             className="text-base-200" 
             icon={<MdOutlineEdit size={20} />}
-            onClick={onEdit}
+            onClick={onUpdate}
             variant="outline"
           >
             edit

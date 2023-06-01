@@ -2,10 +2,10 @@
 
 import { useState } from "react"
 import { Office } from "./components/Office"
-import { NewLocationForm } from "./components/Location/NewLocationForm"
+import { CreateLocationForm } from "./components/Location/CreateLocationForm"
 import { FormProps } from "./components/Location/LocationForm/validator"
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { EditLocationForm } from "./components/Location/EditLocationForm"
+import { UpdateLocationForm } from "./components/Location/UpdateLocationForm"
 import { useLocations } from "./hooks/useLocations"
 import { FeedbackBanner } from "./components/FeedbackBanner"
 
@@ -16,12 +16,12 @@ export default function Home() {
   const { locations, createLocation, editLocation, deleteLocation } = useLocations()
   const [parent] = useAutoAnimate()
 
-  const handleCreateNewLocation = (data: FormProps) => {
+  const handleCreateLocation = (data: FormProps) => {
     createLocation(data)
     setIsCreateFormVisible(false)
   }
 
-  const handleEditLocation = (data: FormProps, id: string) => {
+  const handleUpdateLocation = (data: FormProps, id: string) => {
     editLocation(data, id)
     handleCloseEditionForm(id)
     setIsFeedbackVisible(true)
@@ -49,8 +49,8 @@ export default function Home() {
       <h1 className="text-6xl text-functional-pure font-light">Offices</h1>
       <div className="flex flex-col gap-4" ref={parent}>
         {isCreateFormVisible ? (
-          <NewLocationForm 
-            onCreate={handleCreateNewLocation}
+          <CreateLocationForm 
+            onCreate={handleCreateLocation}
             onClose={() => setIsCreateFormVisible(false)} 
           />
         ) : (
@@ -64,10 +64,10 @@ export default function Home() {
           </button>
         )}
         {locations.map(location => editingLocationIds.includes(location.id) ? (
-          <EditLocationForm 
+          <UpdateLocationForm 
             key={location.id} 
             location={location}
-            onSave={data => handleEditLocation(data, location.id)} 
+            onSave={data => handleUpdateLocation(data, location.id)} 
             onClose={() => handleCloseEditionForm(location.id)}
           />
         ) : (
@@ -75,7 +75,7 @@ export default function Home() {
             key={location.id} 
             {...location} 
             onDelete={() => handleDeleteLocation(location.id)}
-            onEdit={() => handleOpenEditionForm(location.id)}
+            onUpdate={() => handleOpenEditionForm(location.id)}
           />
         ))}
         <footer className="flex flex-col items-center justify-center gap-2 mt-2" >

@@ -6,13 +6,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import type { Location } from '../../../types/models'
 import { useEffect } from "react"
 
-type EditLocationForm = {
+type UpdateLocationForm = {
   location: Location
   onSave: (data: FormProps) => void
   onClose?: VoidFunction
 }
 
-export const EditLocationForm = ({ location, onClose, onSave }: EditLocationForm) => {
+export const UpdateLocationForm = ({ location, onClose, onSave }: UpdateLocationForm) => {
   const formMethods = useForm<FormProps>({ 
     mode: 'all',
     resolver: zodResolver(schema),

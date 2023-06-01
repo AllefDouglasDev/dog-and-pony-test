@@ -5,12 +5,12 @@ import { schema, FormProps } from "../LocationForm/validator"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from "react"
 
-type NewLocationForm = {
+type CreateLocationForm = {
   onCreate: (data: FormProps) => void
   onClose?: VoidFunction
 }
 
-export const NewLocationForm = ({ onClose, onCreate }: NewLocationForm) => {
+export const CreateLocationForm = ({ onClose, onCreate }: CreateLocationForm) => {
   const formMethods = useForm<FormProps>({ 
     mode: 'all',
     resolver: zodResolver(schema), 
