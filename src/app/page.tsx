@@ -8,7 +8,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { UpdateLocationForm } from "./components/Location/UpdateLocationForm";
 import { useLocations } from "./hooks/useLocations";
 import { FeedbackBanner } from "./components/FeedbackBanner";
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export default function Home() {
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false);
@@ -63,7 +63,7 @@ export default function Home() {
         ) : (
           <button
             type="button"
-            className={clsx([
+            className={twMerge([
               "flex items-center justify-between px-4 py-3",
               "w-80 min-w-80 rounded-lg bg-functional-pure text-white",
             ])}

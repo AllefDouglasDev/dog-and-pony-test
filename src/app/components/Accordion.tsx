@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import clsx from "clsx"
+import { twMerge } from "tailwind-merge"
 
 type AccordionProps = {
   title: string
@@ -14,7 +14,7 @@ export const Accordion = ({ title, description, children }: AccordionProps) => {
   return (
     <details ref={parent} className="group w-80 min-w-80 rounded-lg bg-white text-black shadow-lg">
       <summary
-        className={clsx([
+        className={twMerge([
           'list-none flex items-center justify-between text-2xl p-4 rounded-lg cursor-pointer',
           'group-open:bg-base-200 group-open:text-white group-open:rounded-b-none',
           'after:content-arrow-blue group-open:after:content-arrow-white'
