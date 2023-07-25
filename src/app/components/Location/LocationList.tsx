@@ -12,12 +12,12 @@ import { LocationCard } from '../LocationCard'
 import { UpdateLocationForm } from './UpdateLocationForm'
 
 export const LocationList = () => {
+  const [parent] = useAutoAnimate()
   const [isFeedbackVisible, setIsFeedbackVisible] = useState(false)
   const [isCreateFormVisible, setIsCreateFormVisible] = useState(false)
   const [editingLocationIds, setEditingLocationIds] = useState<string[]>([])
   const { locations, createLocation, editLocation, deleteLocation } =
     useLocations()
-  const [parent] = useAutoAnimate()
 
   const handleCreateLocation = (data: FormProps) => {
     createLocation(data)
