@@ -1,7 +1,7 @@
 import { MdClose } from "react-icons/md"
-import { LocationForm } from "../LocationForm"
+import { LocationForm } from "./LocationForm"
 import { FormProvider, useForm } from "react-hook-form"
-import { schema, FormProps } from "../LocationForm/validator"
+import { schema, FormProps } from "./LocationForm/validator"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useEffect } from "react"
 
