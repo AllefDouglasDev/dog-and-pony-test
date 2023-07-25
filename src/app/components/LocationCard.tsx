@@ -3,7 +3,7 @@ import { RiDeleteBinLine } from 'react-icons/ri'
 import { Accordion } from "./Accordion"
 import { Button } from './Form/Button'
 
-type OfficeProps = {
+type LocationCardProps = {
   title: string
   address: string
   contact: {
@@ -16,7 +16,7 @@ type OfficeProps = {
   onDelete?: VoidFunction
 }
 
-export const Office = ({ title, address, contact, onUpdate, onDelete }: OfficeProps) => {
+export const LocationCard = ({ title, address, contact, onUpdate, onDelete }: LocationCardProps) => {
   return (
     <Accordion title={title} description={address}>
       <div>
